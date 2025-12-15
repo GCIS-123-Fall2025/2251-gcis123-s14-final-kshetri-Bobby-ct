@@ -24,6 +24,7 @@ For credit your function must use a stack or a queue in a significant way.
 """
 
 # This question should be called "How many artificle constraints can we put on one question?"
+# mercy
 
 def eval(q, integer):
     if integer > 0:
