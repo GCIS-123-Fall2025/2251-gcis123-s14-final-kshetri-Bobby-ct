@@ -17,8 +17,26 @@ Constructor:
     Accepts a brand name.  The fan should default to off and a speed of 0
 """
 class Fan:
-    pass # please replace with your solution
+    __slots__ = ['__brand', '__is_on', '__speed']
+    def __init__(self, brand):
+        self.__brand = brand
+        self.__is_on = False
+        self.__speed = 0
+
+    def get_brand(self):
+        return self.__brand
     
+    def get_speed(self):
+        return self.__speed
+    
+    def is_on(self):
+        return self.__is_on
+
+    def set_power(self, power):
+        self.__is_on = bool(power)
+
+    def set_speed(self, speed):
+        self.__speed = int(speed)
 
 """
 Complete the turn_on function below to update the state of the fan.
@@ -29,11 +47,15 @@ Parameters:
 Returns:
     True - if the speed was valid and fan is on.
     False - otherwise
+    """
+def turn_on(fan, speed):
+    if 0 <= speed <= 10:
+        fan.set_power(True)
+        fan.set_speed(speed)
+        return True
+    else:
+        return False
 
-"""
-def turn_on(fan,speed):
-    pass # please replace with your solution
-    
 
 """
 Complete the turn_off function below to update the state of the fan.  When a fan is off,
@@ -42,7 +64,9 @@ Parameters:    fan - a fan object
 Returns:    None
 """
 def turn_off(fan):
-    pass # please replace with your solution
+    fan.set_power(False)
+    fan.set_speed(0)
+    return None
     
 
 """
@@ -57,7 +81,7 @@ Example:
 More test cases in main() method
 """
 def get_state(fan):
-    return (fan.brand, fan.is_on, fan.speed)
+    return (fan.get_brand(), fan.is_on(), fan.get_speed())
 
 
 def main():
