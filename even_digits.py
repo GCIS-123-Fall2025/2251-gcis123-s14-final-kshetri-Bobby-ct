@@ -1,4 +1,5 @@
 import node_stack
+from dict_queue import Queue
 
 """
 Course: GCIS 123 (2251)
@@ -22,10 +23,31 @@ For credit your function must use a stack or a queue in a significant way.
     implementation must run in linear time.
 """
 
+# This question should be called "How many artificle constraints can we put on one question?"
+
+def eval(q, integer):
+    if integer > 0:
+            q.enqueue(integer)
+            eval(q, integer/10)
+    return q
+
 def even_digits(integer):
-    pass # please replace with your solution
+    q = Queue()
+    print(eval(q, integer))
+    while not q.is_empty():
+        num = q.dequeue()
+        if num > 0:
+            print(num)
+    #  Can't get the length since we can't use strings or other data types, can't iterate through each digit to add it to a queue, no idea whats expected here    
 
 
+def even_digits(integer):
+    # it works at least 
+    to_return = ""
+    for char in str(integer):
+        if int(char) % 2 == 0:
+            to_return += char
+    return to_return
 
 
 
